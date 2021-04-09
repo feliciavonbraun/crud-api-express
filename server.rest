@@ -1,0 +1,31 @@
+GET http://localhost:3000/api
+
+###
+
+GET http://localhost:3000/api/2
+
+###
+
+POST http://localhost:3000/api/
+Content-Type: application/json
+
+{
+    "bloo": "lol",
+    "description": "fin fin fin",
+    "color": "vit"
+}
+
+###
+
+DELETE http://localhost:3000/api/flowers/2
+
+###
+
+PUT http://localhost:3000/api/flowers/3
+Content-Type: application/json
+
+{
+    "flowerName": "Ogräs",
+    "description": "ful ful ful",
+    "color": "brun"
+}
