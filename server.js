@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-const flowers = [
+let flowers = [
     {
         id: 0,
         flowerName: "Krokus",
@@ -72,27 +72,32 @@ app.post('/api/', (req, res) => {
     res.status(201).json(req.body);
 })
 
-// Deletes last object from array 
-app.delete('/api/flowers/:id', (req, res) => {
-    // const idToDelete = req.params.id
-    // const deletedProduct = flowers.splice(lastProduct); // om jag vill ta bort ett speciellt index
-    const deleteLastProduct = flowers.pop(flowers)
-    res.json(deleteLastProduct)
-})
-
 // Updatets
 app.put('/api/flowers/:id', (req, res) => {
+   
+    // req.params.id
+    const { id } = req.params;
+    const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id)
 
-    req.params.id
-    flowers.findIndex()
+    // (id som ska bytas, hur många ting som ska tas bort, vad som ska ersätta + id)
+    flowers.splice(foundFlowerIndex, 1, req.body)
+    res.json(req.body)
+    console.log(req.body)
 
     // Hitta rätt objekt med ID i flower-array
     // Ersätta req.body med det hittade objektet
-
-
-    
-    res.json()
 })
+
+// Deletes last object from array 
+app.delete('/api/flowers/:id', (req, res) => {
+    const { id } = req.params;
+    flowers = flowers.filter((flower) => flower.id != id)
+    res.send(`hi you, User with the ID ${id} deleted from database.`)
+    
+    // const deleteLastProduct = flowers.pop(flowers)
+    // res.json(deleteLastProduct)
+})
+
 
 // Starts the server 
 app.listen(port, () => {

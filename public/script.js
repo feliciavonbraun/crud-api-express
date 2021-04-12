@@ -1,11 +1,11 @@
 window.addEventListener('load', loadSite)
 
-console.log('script filen nådd')
+console.log('script filen nådd') 
 
 async function loadSite() {
     console.log('load site nådd')
     const allFlowers = await getAllFlowers();
-    const specificFlower = getSpecific(1);
+    const specificFlower = getSpecific(2);
     const newFlower = saveNewFlower("hundkex");
 
     console.log(allFlowers);
@@ -25,7 +25,7 @@ async function getAllFlowers() {
     // )
     // lista.innerHTML = flowers
     // document.body.append(lista)
-    
+
 
     // document.write(
     //     flowers.map(a => Object.values(a).join(' '))
@@ -33,8 +33,8 @@ async function getAllFlowers() {
     // );
 
 
-    const body = document.getElementById("allFlowersDiv");
-    const container = document.createElement("div");
+    const allFlowersDiv = document.getElementById("allFlowersDiv");
+    const arrayContainer = document.createElement("div");
     for (const objIndex of flowers) {
         const list = document.createElement("ul");
         list.setAttribute("class", objIndex);
@@ -43,9 +43,9 @@ async function getAllFlowers() {
             liElement.innerHTML = `${key}:${objIndex[key]}`;
             list.appendChild(liElement);
         }
-        container.appendChild(list);
+        arrayContainer.appendChild(list);
     }
-    body.appendChild(container);
+    allFlowersDiv.appendChild(arrayContainer);
 
 
     // const pTag = document.createElement('p');
@@ -58,6 +58,13 @@ async function getAllFlowers() {
 
 async function getSpecific(id) {
     const flower = await requestFromServer("/api/" + id, "GET")
+
+    const specificFlowerDiv = document.getElementById('specificFlowerDiv')
+    const paragraph = document.createElement('p');
+    paragraph.innerHTML = flower;
+    specificFlowerDiv.append(paragraph)
+   
+
     return flower;
 }
 
@@ -81,6 +88,9 @@ async function requestFromServer(url, method, body) {
 
     return result;
 }
+
+
+
 
 // const button = document.querySelector('button')
 // button.addEventListener('click', fetchNrOfVisitors);

@@ -17,15 +17,17 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/flowers/2
-
-###
-
-PUT http://localhost:3000/api/flowers/3
+PUT http://localhost:3000/api/flowers/1
 Content-Type: application/json
 
 {
     "flowerName": "Ogräs",
-    "description": "ful ful ful",
+    "description": "fuuul",
     "color": "brun"
 }
+
+###
+
+DELETE http://localhost:3000/api/flowers/0
+
+###
