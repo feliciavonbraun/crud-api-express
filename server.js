@@ -36,18 +36,18 @@ app.get('/api/', (req, res) => {
 
 // hämta specifik 
 app.get('/api/:id/', (req, res) => {
+    
     const id = req.params.id
-
     const foundFlower = flowers.find((flower) => {
         return flower.id == id
     })
 
     if(!foundFlower) {
-        res.json({ "Error": "Sorry this id does not exist" })
+        res.json({ "Error": "Sorry this ID does not exist" })
     }
 
     console.log(foundFlower)
-    res.json(foundFlower)
+    res.status(200).json(foundFlower)
 })
 
 // Adds new object and sets ID
@@ -63,7 +63,6 @@ app.post('/api/', (req, res) => {
     })
     idToSave++
 
-    console.log(idToSave)    
     flowers.push({
         id: idToSave,
         ...flowerToSave
@@ -79,20 +78,20 @@ app.put('/api/flowers/:id', (req, res) => {
     const { id } = req.params;
     const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id)
 
-    // (id som ska bytas, hur många ting som ska tas bort, vad som ska ersätta + id)
-    flowers.splice(foundFlowerIndex, 1, req.body)
-    res.json(req.body)
-    console.log(req.body)
+    const replacedFlower = {
+        id: foundFlowerIndex,
+        ...req.body
+    }
 
-    // Hitta rätt objekt med ID i flower-array
-    // Ersätta req.body med det hittade objektet
+    flowers.splice(foundFlowerIndex, 1, replacedFlower)
+    res.status(200).json(req.body);
 })
 
 // Deletes last object from array 
 app.delete('/api/flowers/:id', (req, res) => {
     const { id } = req.params;
     flowers = flowers.filter((flower) => flower.id != id)
-    res.send(`hi you, User with the ID ${id} deleted from database.`)
+    res.status(200).json(`hi you, User with the ID ${id} deleted from database.`)
     
     // const deleteLastProduct = flowers.pop(flowers)
     // res.json(deleteLastProduct)
