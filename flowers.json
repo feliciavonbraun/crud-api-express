@@ -1,0 +1,90 @@
+[
+  {
+    "id": 0,
+    "flowerName": "Krokus",
+    "description": "fin fin fin",
+    "color": "Lila"
+  },
+  {
+    "id": 1,
+    "flowerName": "Tussilago",
+    "description": "fin fin fin",
+    "color": "Gul"
+  },
+  {
+    "id": 2,
+    "flowerName": "Ogräs",
+    "description": "fuuul",
+    "color": "brun"
+  },
+  {
+    "id": 3,
+    "bloo": "lol",
+    "description": "fin fin fin",
+    "color": "vit"
+  },
+  {
+    "id": 4,
+    "title": "pillipilipilli"
+  },
+  {
+    "id": 5,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 6,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 7,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 8,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 9,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 10,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 11,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 12,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 13,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  },
+  {
+    "id": 14,
+    "flowerName": "Tulpan",
+    "description": "fin",
+    "color": "Rosa"
+  }
+]
