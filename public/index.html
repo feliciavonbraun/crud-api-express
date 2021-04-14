@@ -16,22 +16,30 @@
     </header>
     <main>
         <div id="allFlowersDiv">
-            <button id="getAllBtn">GET</button>
             <p>Alla blommor: </p>
+            <button id="getAllBtn">GET</button>
         </div>
+
         <div id="specificFlowerDiv">
-            <button id="getSpecificBtn">GET</button>
             <p>Specifik blomma: </p>
+            <input id="specificFlowerInput" type="number" placeholder="ID" value="idValue"/>
+            <button id="getSpecificBtn" type="submit">GET</button>
         </div>
+
         <div id="postDiv">
+            <p>Lägg till ny blomma: </p>
+            <input id="flowerNamePost" type="text" placeholder="flowerName" />
+            <input type="text" placeholder="description"/>
+            <input type="text" placeholder="color"/>
             <button id="postBtn">POST</button>
         </div>
+
         <div id="putDiv">
+            <p>Uppdatera blomma med: </p>
             <button id="putBtn">PUT</button>
         </div>
-        <div id="deleteDiv">
-            <button id="deleteBtn">DELETE</button>
-        </div>
+
+       
     </main>
 </body>
 

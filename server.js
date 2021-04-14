@@ -15,12 +15,12 @@ app.use(express.json());
 
 // Define out endpoints
 // hämta alla 
-app.get('/api/', (req, res) => {
+app.get('/api/flowers', (req, res) => {
     res.json(flowers);
 })
 
 // hämta specifik 
-app.get('/api/:id/', (req, res) => {
+app.get('/api/flowers/:id/', (req, res) => {
 
     const id = req.params.id
     const foundFlower = flowers.find((flower) => {
@@ -28,7 +28,7 @@ app.get('/api/:id/', (req, res) => {
     })
 
     if (!foundFlower) {
-        res.json({ "Error": "Sorry this ID does not exist" })
+        res.status(404).json({ "Error": "Sorry this ID does not exist" })
     }
 
     console.log(foundFlower)
@@ -36,7 +36,7 @@ app.get('/api/:id/', (req, res) => {
 })
 
 // Adds new object and sets ID
-app.post('/api/', (req, res) => {
+app.post('/api/flowers', (req, res) => {
 
     const flowerToSave = req.body
 
@@ -64,10 +64,11 @@ app.put('/api/flowers/:id', (req, res) => {
     // req.params.id
     const { id } = req.params;
     const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id)
-
+    
+    // lägg till en if om den inte finns 
     const replacedFlower = {
-        id: foundFlowerIndex,
-        ...req.body
+        ...req.body,
+        id: parseInt(id)
     }
 
     flowers.splice(foundFlowerIndex, 1, replacedFlower);

@@ -1,47 +1,69 @@
 window.addEventListener('load', addEventListeners)
-console.log('script filen nådd') 
+console.log('script filen nådd')
 
+// const id = req.params.id
+// console.log(id)
 
-function addEventListeners() {
+async function addEventListeners() {
 
     console.log('event filen nådd')
 
-    const getAllBtn = document.getElementById('getAllBtn');
+    // const getAllBtn = document.getElementById('getAllBtn');
     const getSpecificBtn = document.getElementById('getSpecificBtn');
     const postBtn = document.getElementById('postBtn');
     const putBtn = document.getElementById('putBtn');
-    const deleteBtn = document.getElementById('deleteBtn');
-    
-    getAllBtn.addEventListener('click', getAllFlowers);
-    getSpecificBtn.addEventListener('click', getSpecific);
-    postBtn.addEventListener('click', saveNewFlower);
-    putBtn.addEventListener('click', updateFlower);
-    deleteBtn.addEventListener('click', deleteFlower);
-}
 
+    await getAllFlowers()
+    // getAllBtn.addEventListener('click', getAllFlowers);
+    getSpecificBtn.addEventListener('click', getSpecific);
+    postBtn.addEventListener('click', postNewFlower);
+    putBtn.addEventListener('click', updateFlower);
+
+}
 
 // async function loadSite() {
 //     console.log('load site nådd')
 //     const allFlowers = await getAllFlowers();
 //     const specificFlower = getSpecific(2);
-//     const newFlower = saveNewFlower("hundkex");
+//     const newFlower = postNewFlower("hundkex");
 
 //     console.log(allFlowers);
 //     console.log(specificFlower);
 //     console.log(newFlower);
 // }
 
+// function reloadPage() {
+//     window.location.reload()
+// }
+
 async function getAllFlowers() {
 
     console.log('gett all nådd')
 
-    const flowers = await requestFromServer("/api/", "GET");
+    const flowers = await requestFromServer("/api/flowers", "GET");
 
+    // lägg till en deleteknapp i yttre for loopen 
     const allFlowersDiv = document.getElementById("allFlowersDiv");
     const arrayContainer = document.createElement("div");
     for (const objIndex of flowers) {
+
         const list = document.createElement("ul");
-        list.setAttribute("class", objIndex);
+        // list.setAttribute("class", objIndex);
+
+        const updateBtn = document.createElement("button");
+        updateBtn.innerHTML = 'PUT';
+        list.appendChild(updateBtn)
+        updateBtn.addEventListener('click', () => {
+            updateFlower(objIndex)
+        });
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.innerHTML = 'X';
+        list.appendChild(deleteBtn)
+        deleteBtn.addEventListener('click', () => {
+            deleteFlower(objIndex.id)
+        });
+
         for (const key in objIndex) {
             const liElement = document.createElement("li");
             liElement.innerHTML = `${objIndex[key]}`;
@@ -52,68 +74,80 @@ async function getAllFlowers() {
     allFlowersDiv.appendChild(arrayContainer);
 
 
-    // const pTag = document.createElement('p');
-    // pTag.innerHTML = JSON.stringify(flowers, null, 1); 
-    // document.body.append(pTag)
-
     return flowers;
-
 }
 
-async function getSpecific(id) {
-
+async function getSpecific(objIndex) {
     console.log('get specifik nådd')
 
-    // const id = 2,
-    const flower = await requestFromServer("/api/" + id, "GET")
+    // document.getElementById('specificFlowerInput') och valuet?? 
+
+    const flower = await requestFromServer(`/api/flowers/${objIndex}`, "GET")
 
     // skriver ut
     const specificFlowerDiv = document.getElementById('specificFlowerDiv')
     const paragraph = document.createElement('p');
     paragraph.innerHTML = JSON.stringify(flower);
     specificFlowerDiv.append(paragraph)
-   
 
     return flower;
 }
 
-async function saveNewFlower() {
-
+async function postNewFlower() {
     console.log('post nådd')
 
-    const body = { 
-        flowerName: 'Tulpan',
+    var flowerNameInput = document.getElementById('flowerNameInput')[0].value ;
+
+    const body = {
+        flowerName: flowerNameInput,
         description: 'fin',
-        color: 'Rosa'  
-    }
-    const newFlower = await requestFromServer("/api/", "POST", body);
+        color: 'Rosa'
+    }    
+
+
+    // var old  = elem.value;
+    // elem.value = old + i.innerHTML;
+
+    const newFlower = await requestFromServer("/api/flowers", "POST", body);
 
     // skriver ut 
     const postDiv = document.getElementById('postDiv');
     const paragraph = document.createElement('p');
     paragraph.innerHTML = JSON.stringify(newFlower);
-    postDiv.append(paragraph);
+    postDiv.append(paragraph); 
+
+    // window.location.reload();
 
     return newFlower;
 }
 
-async function updateFlower(id) {
+async function updateFlower(objIndex) {
     console.log('put nådd')
+
+    // const flowerNameInput = document.createElement("input");
+    // flowerNameInput.innerHTML = 'flowerName';
+    // putDiv.appendChild(flowerNameInput)
+
+    // const colorInput = document.createElement("input");
+    // colorInput.innerHTML = 'flowerName';
+    // putDiv.appendChild(colorInput)
+
+
+    await requestFromServer(`/api/flowers/${objIndex}`, "PUT");
+
+    return;
 
 }
 
-async function deleteFlower(id) {
-    console.log('delete nådd')
+async function deleteFlower(objIndex) {
+    console.log('delete nådd');
+    console.log(objIndex)
 
-    const deleteFlower = await requestFromServer("/api/" + id, "DELETE"); 
+    const deleteFlowerByID = await requestFromServer(`/api/flowers/${objIndex}`, "DELETE");
 
-    // skriver ut
-    const deleteDiv = document.getElementById('deleteDiv');
-    const paragraph = document.createElement('p');
-    paragraph.innerHTML = JSON.stringify(newFlower);
-    deleteDiv.append(paragraph);
+    window.location.reload();
 
-    return deleteFlower; 
+    return deleteFlowerByID;
 }
 
 async function requestFromServer(url, method, body) {
