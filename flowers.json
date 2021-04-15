@@ -32,7 +32,7 @@
   {
     "id": 6,
     "flowerName": "Krokus",
-    "description": "jättefin",
+    "description": "Fin",
     "color": "gul"
   },
   {
@@ -40,11 +40,5 @@
     "flowerName": "Vitsippa",
     "description": "Fin",
     "color": "Vit"
-  },
-  {
-    "id": 8,
-    "flowerName": "Blåsippa",
-    "description": "Fin",
-    "color": "Blå"
   }
 ]

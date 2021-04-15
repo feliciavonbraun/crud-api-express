@@ -51,7 +51,24 @@ button {
     padding: 1rem;
     border: none;
     border-radius: 10px;
-    /* outline: none; */
+    outline: none;
+    cursor: pointer;
+    cursor: url(/public/cursor.png);
+    cursor: url(/public/cursor.png);
+}
+button:hover {
+    background: #60425e;
+}
+
+.deleteBtn {
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    transition: transform .2s;
+    cursor: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deviantart.com%2Fsashasonesica%2Fart%2FPink-Flower-PNG-400372156&psig=AOvVaw2ro-dWvzt1gMG1wOwHJRES&ust=1618587328846000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCODJv-jJgPACFQAAAAAdAAAAABAd');
+}
+.deleteBtn:hover {
+    transform: scale(1.5);
 }
 
 input {
@@ -63,7 +80,6 @@ input {
 }
 
 .modifyArea {
-    /* background: chocolate; */
     display: flex;
     padding: 1rem;
     justify-content: space-evenly;
@@ -85,7 +101,6 @@ input {
 
 } */
 .arrayContainer {
-    /* background: blueviolet; */
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -94,18 +109,17 @@ input {
 }
 
 .flowerUL {
+    position: relative;
     background: #6C7252;
     border-radius: 5px;
     width: 10rem;
     height: 10rem;
-    flex-wrap: wrap;
-
+    padding-top: 2rem;
 }
 
-.deleteBtn {
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+
+.material-icons {
+    color: white;
 }
 
 .column {

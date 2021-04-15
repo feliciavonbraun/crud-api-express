@@ -33,8 +33,9 @@ async function getAllFlowers() {
         //     updateFlower(objIndex.id)
         // });
 
-        const deleteBtn = document.createElement("button");
-        deleteBtn.innerHTML = 'X';
+
+        const deleteBtn = document.createElement("span");
+        deleteBtn.innerHTML = '🗑';
         list.appendChild(deleteBtn)
         deleteBtn.classList.add('deleteBtn')
         deleteBtn.addEventListener('click', () => {
