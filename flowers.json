@@ -1,56 +1,50 @@
 [
   {
-    "id": 0,
-    "flowerName": "Krokus",
-    "description": "fin fin fin",
-    "color": "Lila"
-  },
-  {
-    "flowerName": "hej",
-    "description": "j",
-    "color": "j",
-    "id": 1
+    "id": 1,
+    "flowerName": "Daisy",
+    "description": "Pretty",
+    "color": "Yellow"
   },
   {
     "id": 2,
-    "flowerName": "Krokus",
-    "description": "jättefin",
-    "color": "lila"
+    "flowerName": "Lily",
+    "description": "Beautiful",
+    "color": "White"
   },
   {
     "id": 3,
-    "flowerName": "Krokus",
-    "description": "jättefin",
-    "color": "Blå"
+    "flowerName": "Tulip",
+    "description": "Smells good",
+    "color": "Pink"
   },
   {
     "id": 4,
-    "flowerName": "Krokus",
-    "description": "jättefin",
-    "color": "Blå"
+    "flowerName": "Sunflower",
+    "description": "Tal",
+    "color": "Yellow"
   },
   {
     "id": 5,
-    "flowerName": "Vitsippa",
-    "description": "jättefin",
-    "color": "Blå"
+    "flowerName": "Orchid",
+    "description": "Colorful",
+    "color": "Lilac"
   },
   {
     "id": 6,
-    "flowerName": "Vitsippa",
+    "flowerName": "Krokus",
     "description": "jättefin",
-    "color": "Blå"
+    "color": "gul"
   },
   {
     "id": 7,
-    "flowerName": "Krokus",
-    "description": "jättefin",
-    "color": "Blå"
+    "flowerName": "Vitsippa",
+    "description": "Fin",
+    "color": "Vit"
   },
   {
     "id": 8,
-    "flowerName": "Krokus",
-    "description": "jättefin",
+    "flowerName": "Blåsippa",
+    "description": "Fin",
     "color": "Blå"
   }
 ]

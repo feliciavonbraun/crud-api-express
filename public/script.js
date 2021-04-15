@@ -71,8 +71,6 @@ async function getSpecific(event) {
 }
 
 async function postNewFlower(event) {
-    console.log('post nådd')
-
     let flowerNameInput = document.getElementById('flowerNameInput');
     let descriptionInput = document.getElementById('descriptionInput');
     let colorInput = document.getElementById('colorInput'); 

@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Architects Daughter', cursive;
 }
 
 body {
@@ -9,7 +10,6 @@ body {
     /* background-repeat: no-repeat; */
     /* object-fit: cover; */
     position: relative;
-    font-family: 'Architects Daughter', cursive;
 }
 
 
