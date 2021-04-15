@@ -17,7 +17,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:3000/api/flowers/1
+PUT http://localhost:3000/api/flowers/884
 Content-Type: application/json
 
 {
@@ -28,6 +28,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/flowers/1
+DELETE http://localhost:3000/api/flowers/5555
 
 ###

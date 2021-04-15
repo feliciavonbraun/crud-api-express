@@ -13,9 +13,6 @@ async function addEventListeners() {
 }
 
 async function getAllFlowers() {
-
-    console.log('gett all nådd')
-
     const flowers = await requestFromServer("/api/flowers", "GET");
 
     const allFlowersDiv = document.getElementById("allFlowersDiv");
@@ -64,12 +61,6 @@ async function getSpecific(event) {
 
     const specificFlower = await requestFromServer(`/api/flowers/${specificFlowerInput}`, "GET")
 
-    // skriver ut
-    // const specificFlowerDiv = document.getElementById('specificFlowerDiv')
-    // const paragraph = document.createElement('p');
-    // paragraph.innerHTML = JSON.stringify(specificFlower);
-    // specificFlowerDiv.append(paragraph)
-
     const specificFlowerDiv = document.getElementById('specificFlowerDiv')
     for (const key in specificFlower) {
         const paragraph = document.createElement("p");
@@ -101,25 +92,33 @@ async function postNewFlower(event) {
 }
 
 async function updateFlower(event) {
-    console.log('put nådd')
-
     const chooseID = document.getElementById('chooseID').value
     const updateFlowerName = document.getElementById('updateFlowerName')
     const updateDescription = document.getElementById('updateDescription')
     const updateColor = document.getElementById('updateColor')
-
+    
     const body = {
         flowerName: updateFlowerName.value,
         description: updateDescription.value,
         color: updateColor.value
     }  
+    
+    const updatedFLower = await requestFromServer(`/api/flowers/${chooseID}`, "PUT", body);
 
-    await requestFromServer(`/api/flowers/${chooseID}`, "PUT", body);
-
+    // Prints error message
+    const putDiv = document.getElementById('putDiv')
+    for (const key in updatedFLower) {
+        const paragraph = document.createElement("p");
+        paragraph.classList.add('specificParagraf')
+        paragraph.innerHTML = `${updatedFLower[key]}`;
+        putDiv.appendChild(paragraph);
+    }
+    
+    // Empty input fields after submit
     updateFlowerName.value = ''
     updateDescription.value = ''
     updateColor.value = ''
-
+    
     const putBtn = document.getElementById('putBtn');
     putBtn.addEventListener('click', updateFlower);
 

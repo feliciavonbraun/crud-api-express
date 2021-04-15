@@ -9,6 +9,7 @@ body {
     /* background-repeat: no-repeat; */
     /* object-fit: cover; */
     position: relative;
+    font-family: 'Architects Daughter', cursive;
 }
 
 
@@ -17,6 +18,13 @@ body {
     position: absolute;
     bottom: 0;
     z-index: -1;
+}
+
+header {
+    background: #7F557D;
+    color: white;
+    padding: .5rem;
+    font-size: xx-small;
 }
 
 
@@ -96,11 +104,17 @@ input {
 
 .deleteBtn {
     display: flex;
-    justify-content: end;
-    align-items: flex-end;
+    justify-content: center; 
+    align-items: center;
 }
 
 .column {
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    .modifyArea {
+        flex-direction: column; 
+    }
 }

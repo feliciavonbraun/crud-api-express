@@ -60,24 +60,21 @@ app.post('/api/flowers', (req, res) => {
 // Updatets specific flower 
 app.put('/api/flowers/:id', (req, res) => {
     const { id } = req.params;
-    const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id)
+    const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id);
     
-    // lägg till en if om den inte finns 
-    if (!id) {
-        res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` })
-    }
+    if (foundFlowerIndex === -1) {
+        res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` });
+    } return
+
     const replacedFlower = {
-        ...req.body,
-        id: parseInt(id)
+        id: parseInt(id),
+        ...req.body
     }
 
     flowers.splice(foundFlowerIndex, 1, replacedFlower);
-
-    const write = fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () =>
-        console.log("put in database")
-    );
-
-    res.status(200).json(req.body);
+    fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () => {
+        res.status(201).json(`Flower with ID ${id} has been updated `)
+    });
 })
 
 // Deletes chosen ID-object from array 
@@ -89,7 +86,7 @@ app.delete('/api/flowers/:id', (req, res) => {
         console.log("delete in database")
     );
 
-    res.status(200).json(`hi you, User with the ID ${id} deleted from database.`)
+    res.status(200).json(`User with the ID ${id} deleted from database.`)
 })
 
 
