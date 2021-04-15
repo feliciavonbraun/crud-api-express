@@ -5,41 +5,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flowers API</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="./script.js"></script>
 </head>
 
 <body>
     <header>
-        <h1>Välkommen hit </h1>
     </header>
     <main>
+        <div class="modifyArea">
+
+            <div id="postDiv" class="column">
+                <p>ADD FLOWER: </p>
+                <input id="flowerNameInput" type="text" placeholder="flowerName" />
+                <input id="descriptionInput" type="text" placeholder="description" />
+                <input id="colorInput" type="text" placeholder="color" />
+                <button id="postBtn" type="submit">POST</button>
+            </div>
+
+            <div id="specificFlowerDiv" class="column">
+                <p>CHOOSE FLOWER: </p>
+                <input id="specificFlowerInput" type="number" placeholder="ID" />
+                <button id="getSpecificBtn" type="submit">GET</button>
+            </div>
+
+            <div id="putDiv" class="column">
+                <p>UPDATE FLOWER: </p>
+                <input id="chooseID" type="text" placeholder="ID" />
+                <input id="updateFlowerName" type="text" placeholder="flowerName" />
+                <input id="updateDescription" type="text" placeholder="description" />
+                <input id="updateColor" type="text" placeholder="color" />
+                <button id="putBtn">PUT</button>
+            </div>
+
+        </div>
         <div id="allFlowersDiv">
-            <p>Alla blommor: </p>
-            <button id="getAllBtn">GET</button>
+
         </div>
 
-        <div id="specificFlowerDiv">
-            <p>Specifik blomma: </p>
-            <input id="specificFlowerInput" type="number" placeholder="ID" value="idValue"/>
-            <button id="getSpecificBtn" type="submit">GET</button>
+        <div class="bgImage">
+            <img src="flowerBg.jpeg" width="100%" alt="">
+
         </div>
 
-        <div id="postDiv">
-            <p>Lägg till ny blomma: </p>
-            <input id="flowerNamePost" type="text" placeholder="flowerName" />
-            <input type="text" placeholder="description"/>
-            <input type="text" placeholder="color"/>
-            <button id="postBtn">POST</button>
-        </div>
-
-        <div id="putDiv">
-            <p>Uppdatera blomma med: </p>
-            <button id="putBtn">PUT</button>
-        </div>
-
-       
+        <button class="material-icons">delete</button>
+        <span class="material-icons">delete</span>
     </main>
 </body>
 

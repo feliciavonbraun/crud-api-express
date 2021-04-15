@@ -1,4 +1,3 @@
-// const { static } = require('express');
 const express = require('express');
 const app = express();
 const port = 3000;
@@ -14,12 +13,12 @@ app.use(express.static('./public'))
 app.use(express.json());
 
 // Define out endpoints
-// hämta alla 
+// Gets all flowers
 app.get('/api/flowers', (req, res) => {
     res.json(flowers);
 })
 
-// hämta specifik 
+// Gets specific flower
 app.get('/api/flowers/:id/', (req, res) => {
 
     const id = req.params.id
@@ -28,7 +27,7 @@ app.get('/api/flowers/:id/', (req, res) => {
     })
 
     if (!foundFlower) {
-        res.status(404).json({ "Error": "Sorry this ID does not exist" })
+        res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` })
     }
 
     console.log(foundFlower)
@@ -58,14 +57,15 @@ app.post('/api/flowers', (req, res) => {
     );
 })
 
-// Updatets
+// Updatets specific flower 
 app.put('/api/flowers/:id', (req, res) => {
-
-    // req.params.id
     const { id } = req.params;
     const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id)
     
     // lägg till en if om den inte finns 
+    if (!id) {
+        res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` })
+    }
     const replacedFlower = {
         ...req.body,
         id: parseInt(id)

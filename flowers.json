@@ -1,38 +1,56 @@
 [
   {
-    "id": 1,
-    "flowerName": "Tulpan",
-    "description": "fin",
-    "color": "Rosa"
+    "id": 0,
+    "flowerName": "Krokus",
+    "description": "fin fin fin",
+    "color": "Lila"
+  },
+  {
+    "flowerName": "hej",
+    "description": "j",
+    "color": "j",
+    "id": 1
   },
   {
     "id": 2,
-    "flowerName": "Tulpan",
-    "description": "fin",
-    "color": "Rosa"
+    "flowerName": "Krokus",
+    "description": "jättefin",
+    "color": "lila"
   },
   {
     "id": 3,
-    "flowerName": "Tulpan",
-    "description": "fin",
-    "color": "Rosa"
+    "flowerName": "Krokus",
+    "description": "jättefin",
+    "color": "Blå"
   },
   {
     "id": 4,
-    "flowerName": "Tulpan",
-    "description": "fin",
-    "color": "Rosa"
+    "flowerName": "Krokus",
+    "description": "jättefin",
+    "color": "Blå"
   },
   {
     "id": 5,
-    "flowerName": "Tulpan",
-    "description": "fin",
-    "color": "Rosa"
+    "flowerName": "Vitsippa",
+    "description": "jättefin",
+    "color": "Blå"
   },
   {
     "id": 6,
-    "flowerName": "Tulpan",
-    "description": "fin",
-    "color": "Rosa"
+    "flowerName": "Vitsippa",
+    "description": "jättefin",
+    "color": "Blå"
+  },
+  {
+    "id": 7,
+    "flowerName": "Krokus",
+    "description": "jättefin",
+    "color": "Blå"
+  },
+  {
+    "id": 8,
+    "flowerName": "Krokus",
+    "description": "jättefin",
+    "color": "Blå"
   }
 ]
