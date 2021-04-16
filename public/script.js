@@ -125,8 +125,7 @@ async function updateFlower(event) {
 }
 
 async function deleteFlower(objIndex) {
-    console.log('delete nådd');
-    console.log(objIndex)
+    console.log('Deleted:', objIndex);
 
     await requestFromServer(`/api/flowers/${objIndex}`, "DELETE");
 

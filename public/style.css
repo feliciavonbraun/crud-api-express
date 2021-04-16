@@ -3,21 +3,14 @@
     font-family: 'Architects Daughter', cursive;
 }
 
-body {
+html, body {
     margin: 0;
-    /* background-image: url('https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'); */
-    /* background-image: url(/public/flowerBg.jpeg); */
-    /* background-repeat: no-repeat; */
-    /* object-fit: cover; */
-    position: relative;
-}
-
-
-.bgImage {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    z-index: -1;
+    height: 100%;
+    background-image: url(./flowerBg.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 header {
@@ -25,25 +18,6 @@ header {
     color: white;
     padding: .5rem;
     font-size: xx-small;
-}
-
-
-main {
-    /* background: linear-gradient(180deg, #FFFFFF 0%, #FF0000 0.01%, #FA0000 58.85%, rgba(255, 255, 255, 0) 100%);    mix-blend-mode: normal; */
-    /* background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 0.01%, #FFFFFF 58.85%, rgba(255, 255, 255, 0) 100%); */
-    background: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 0.01%, #FFFFFF 18.23%, rgba(255, 255, 255, 0) 34.38%);
-    z-index: 1;
-    height: 100%;
-    
-    /* funkar inte */
-    /* background-image: url('https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); */
-    /* background-image: url(pexelsBg.jpeg); */
-    /* background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Funsplash.com%2Fphotos%2FRkOtjbPuHZw&psig=AOvVaw0Ho-dQy5oJ4ADTEAydMlwC&ust=1618567458362000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIj9pOX__-8CFQAAAAAdAAAAABAJ'); */
-    
-    /* funkar */
-    /* background-image: url('http://www.birds.com/wp-content/uploads/home/bird4.jpg'); */
-    /* background-image: url('https://i.insider.com/5e8388cd487c2267e538f117?width=750&format=jpeg&auto=webp'); */
-    /* background-image: url('https://images.pexels.com/photos/262713/pexels-photo-262713.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'); */
 }
 
 button {

@@ -20,7 +20,6 @@ app.get('/api/flowers', (req, res) => {
 
 // Gets specific flower
 app.get('/api/flowers/:id/', (req, res) => {
-
     const id = req.params.id
     const foundFlower = flowers.find((flower) => {
         return flower.id == id
@@ -29,14 +28,11 @@ app.get('/api/flowers/:id/', (req, res) => {
     if (!foundFlower) {
         res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` })
     }
-
-    console.log(foundFlower)
     res.status(200).json(foundFlower)
 })
 
 // Adds new object and sets ID
 app.post('/api/flowers', (req, res) => {
-
     const flowerToSave = req.body
 
     let idToSave = 0
@@ -52,7 +48,7 @@ app.post('/api/flowers', (req, res) => {
         ...flowerToSave
     });
 
-    const write = fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () =>
+    fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () =>
         res.status(201).json(req.body)
     );
 })
@@ -61,19 +57,19 @@ app.post('/api/flowers', (req, res) => {
 app.put('/api/flowers/:id', (req, res) => {
     const { id } = req.params;
     const foundFlowerIndex = flowers.findIndex((flower) => flower.id == id);
-    
-    if (foundFlowerIndex === -1) {
-        res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` });
-    } return
 
+    if (foundFlowerIndex === -1) {
+        return res.status(404).json({ "Error": `Sorry ID: ${id} does not exist` });
+    }
+    
     const replacedFlower = {
         id: parseInt(id),
         ...req.body
     }
-
     flowers.splice(foundFlowerIndex, 1, replacedFlower);
+
     fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () => {
-        res.status(201).json(`Flower with ID ${id} has been updated `)
+        res.status(201).json('')
     });
 })
 
@@ -82,11 +78,9 @@ app.delete('/api/flowers/:id', (req, res) => {
     const { id } = req.params;
     flowers = flowers.filter((flower) => flower.id != id)
 
-    const write = fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () =>
-        console.log("delete in database")
+    fs.writeFile("flowers.json", JSON.stringify(flowers, null, 2), () =>
+        res.status(200).json(`User with the ID ${id} deleted from database.`)
     );
-
-    res.status(200).json(`User with the ID ${id} deleted from database.`)
 })
 
 
