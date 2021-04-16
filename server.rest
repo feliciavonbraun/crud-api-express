@@ -10,14 +10,14 @@ POST http://localhost:3000/api/flowers/
 Content-Type: application/json
 
 {
-    "bloo": "lol",
-    "description": "fin fin fin",
-    "color": "vit"
+    "flowerName": "Flower",
+    "description": "Pretty",
+    "color": "White"
 }
 
 ###
 
-PUT http://localhost:3000/api/flowers/884
+PUT http://localhost:3000/api/flowers/10
 Content-Type: application/json
 
 {
@@ -28,6 +28,6 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/api/flowers/5555
+DELETE http://localhost:3000/api/flowers/11
 
 ###

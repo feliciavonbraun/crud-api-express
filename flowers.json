@@ -40,5 +40,29 @@
     "flowerName": "Vitsippa",
     "description": "Fin",
     "color": "Vit"
+  },
+  {
+    "id": 8,
+    "flowerName": "Krokus",
+    "description": "jättefin",
+    "color": "gul"
+  },
+  {
+    "id": 9,
+    "flowerName": "Monstera",
+    "description": "Stor",
+    "color": "Grön"
+  },
+  {
+    "id": 10,
+    "flowerName": "Ogräs",
+    "description": "fuuul",
+    "color": "brun"
+  },
+  {
+    "id": 11,
+    "flowerName": "Tussilago",
+    "description": "jättefin",
+    "color": "Blå"
   }
 ]

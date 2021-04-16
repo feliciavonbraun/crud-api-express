@@ -9,7 +9,6 @@ async function addEventListeners() {
     getSpecificBtn.addEventListener('click', getSpecific);
     postBtn.addEventListener('click', postNewFlower);
     putBtn.addEventListener('click', updateFlower);
-
 }
 
 async function getAllFlowers() {
@@ -23,23 +22,14 @@ async function getAllFlowers() {
     for (const objIndex of flowers) {
 
         const list = document.createElement("ul");
-        // list.setAttribute("class", objIndex);
         list.classList.add("flowerUL");
 
-        // const updateBtn = document.createElement("button");
-        // updateBtn.innerHTML = 'PUT';
-        // list.appendChild(updateBtn)
-        // updateBtn.addEventListener('click', () => {
-        //     updateFlower(objIndex.id)
-        // });
-
-
         const deleteBtn = document.createElement("span");
-        deleteBtn.innerHTML = '🗑';
-        list.appendChild(deleteBtn)
-        deleteBtn.classList.add('deleteBtn')
+        deleteBtn.innerHTML = 'X';
+        list.appendChild(deleteBtn);
+        deleteBtn.classList.add('deleteBtn');
         deleteBtn.addEventListener('click', () => {
-            deleteFlower(objIndex.id)
+            deleteFlower(objIndex.id);
         });
 
         for (const key in objIndex) {
@@ -55,17 +45,15 @@ async function getAllFlowers() {
     return flowers;
 }
 
-async function getSpecific(event) {
-    console.log('get specifik nådd')
-
+async function getSpecific(event) {    
     const specificFlowerInput = document.getElementById('specificFlowerInput').value;
-
-    const specificFlower = await requestFromServer(`/api/flowers/${specificFlowerInput}`, "GET")
-
-    const specificFlowerDiv = document.getElementById('specificFlowerDiv')
+    
+    const specificFlower = await requestFromServer(`/api/flowers/${specificFlowerInput}`, "GET");
+    
+    const specificFlowerDiv = document.getElementById('specificFlowerDiv');
     for (const key in specificFlower) {
         const paragraph = document.createElement("p");
-        paragraph.classList.add('specificParagraf')
+        paragraph.classList.add('specificParagraf');
         paragraph.innerHTML = `${specificFlower[key]}`;
         specificFlowerDiv.appendChild(paragraph);
     }
@@ -80,37 +68,38 @@ async function postNewFlower(event) {
         flowerName: flowerNameInput.value,
         description: descriptionInput.value,
         color: colorInput.value
-    }
+    };
     
     await requestFromServer("/api/flowers", "POST", body);
+
     flowerNameInput.value = ''
     descriptionInput.value = ''
     colorInput.value = ''
 
-    getAllFlowers()
+    getAllFlowers();
 }
 
 async function updateFlower(event) {
-    const chooseID = document.getElementById('chooseID').value
-    const updateFlowerName = document.getElementById('updateFlowerName')
-    const updateDescription = document.getElementById('updateDescription')
-    const updateColor = document.getElementById('updateColor')
+    const chooseID = document.getElementById('chooseID').value;
+    const updateFlowerName = document.getElementById('updateFlowerName');
+    const updateDescription = document.getElementById('updateDescription');
+    const updateColor = document.getElementById('updateColor');
     
     const body = {
         flowerName: updateFlowerName.value,
         description: updateDescription.value,
         color: updateColor.value
-    }  
+    };
     
     const updatedFLower = await requestFromServer(`/api/flowers/${chooseID}`, "PUT", body);
 
     // Prints error message
-    const putDiv = document.getElementById('putDiv')
+    const putDiv = document.getElementById('putDiv');
+    const errorMessageP = document.getElementById('errorMessageP');
     for (const key in updatedFLower) {
-        const paragraph = document.createElement("p");
-        paragraph.classList.add('specificParagraf')
-        paragraph.innerHTML = `${updatedFLower[key]}`;
-        putDiv.appendChild(paragraph);
+        errorMessageP.innerHTML = '';
+        errorMessageP.innerHTML = `${updatedFLower[key]}`;
+        putDiv.appendChild(errorMessageP);
     }
     
     // Empty input fields after submit
@@ -121,7 +110,7 @@ async function updateFlower(event) {
     const putBtn = document.getElementById('putBtn');
     putBtn.addEventListener('click', updateFlower);
 
-    getAllFlowers()
+    getAllFlowers();
 }
 
 async function deleteFlower(objIndex) {
@@ -129,7 +118,7 @@ async function deleteFlower(objIndex) {
 
     await requestFromServer(`/api/flowers/${objIndex}`, "DELETE");
 
-    getAllFlowers()
+    getAllFlowers();
 }
 
 async function requestFromServer(url, method, body) {
@@ -142,7 +131,7 @@ async function requestFromServer(url, method, body) {
         }
     });
 
-    const result = await response.json()
+    const result = await response.json();
 
     return result;
 }
